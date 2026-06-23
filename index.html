@@ -333,6 +333,26 @@
 
             <p>Sea que mantenga o modifique el orden, corresponderá revisar la pertinencia de títulos de primer, segundo y cuarto nivel, además de los datos en visualización.</p>
             
+            <section id="seccion-buscador" style="margin: 40px 0;">
+                <h3>Buscador de Electivos</h3>
+                <input type="text" id="buscador" placeholder="Escribe para buscar un electivo..." style="width: 100%; padding: 12px; margin-bottom: 20px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="background-color: #f4f4f4;">
+                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Electivo</th>
+                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Mención</th>
+                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Código</th>
+                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Créditos</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <h5>Fuentes</h5>
             <h5>Fuentes</h5>
             <p>Nombre; Nombre; Nombre</p>
         </main>
@@ -1612,8 +1632,51 @@
     "CRÉDITOS": 3
   }
 ];
-            
+
+  function mostrarDatos(datos) {
+      const cuerpoTabla = document.getElementById('cuerpoTabla');
+      if (!cuerpoTabla) return;
+
+      cuerpoTabla.innerHTML = ''; 
+
+      datos.forEach(item => {
+          const fila = document.createElement('tr');
+          fila.innerHTML = `
+              <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>${item.ELECTIVO}</strong></td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${item["MENCIÓN"] || '-'}</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;"><code>${item["COD."]}</code></td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${item["CRÉDITOS"]}</td>
+          `;
+          cuerpoTabla.appendChild(fila);
+      });
+  }
+
   window.onload = function() {
+      const canvasGrafico = document.getElementById('graficoBarras');
+      if (canvasGrafico && typeof config !== 'undefined') {
+          new Chart(canvasGrafico.getContext('2d'), config);
+      }
+
+      if (typeof baseDeDatos !== 'undefined') {
+          mostrarDatos(baseDeDatos);
+      }
+
+      const inputBuscador = document.getElementById('buscador');
+      if (inputBuscador && typeof baseDeDatos !== 'undefined') {
+          inputBuscador.addEventListener('input', function(e) {
+              const textoBuscado = e.target.value.toLowerCase();
+              const datosFiltrados = baseDeDatos.filter(item => 
+                  item.ELECTIVO && item.ELECTIVO.toLowerCase().includes(textoBuscado)
+              );
+              mostrarDatos(datosFiltrados);
+          });
+      }
+  };
+</script>
+</body>
+</html>
+            
+window.onload = function() {
     const ctx = document.getElementById('graficoBarras').getContext('2d');
     new Chart(ctx, config);
   };
