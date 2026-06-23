@@ -1,1741 +1,445 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Electivos Diseño</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"/>
-      
-        <style>
-            /*
-                Lo que sigue está "inspirado" en un trabajo de Reuters Graphics:
-                https://www.reuters.com/graphics/IRAN-CRISIS/OIL-CONSUMERS/akpeyynmypr/
-            */
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Electivos Diseño</title>
 
-            *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
 
-            :root {
-                /* Colores */
-                --bg: #fefefe;
-                --color-text: rgb(64, 64, 64);
-                --color-muted: rgb(102, 102, 102);
-                --accent: #e8571a;
-                --border: silver;
-                /* Tipografía */
-                --serif:  "Spectral", serif;
-                --sans:   "Georama", sans-serif;
-            }
+    <!-- Chart.js — una sola vez, en el <head> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-            body {
-                background: var(--bg);
-                font-family: var(--serif);
-                color: var(--color-text);
-                font-size: 1.25rem;
-                line-height: 1.5;
-                -webkit-font-smoothing: antialiased;
-            }
+    <style>
+      /*
+       * Inspirado en Reuters Graphics:
+       * https://www.reuters.com/graphics/IRAN-CRISIS/OIL-CONSUMERS/akpeyynmypr/
+       */
 
-            /* ── Barra de navegación y pie: comparten la misma estructura de layout ── */
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-            nav,
-            footer {
-                border-color: var(--border);
-                border-style: solid;
-                font-family: var(--sans);
-                font-size: calc(0.5rem + 0.5vw + 0.5vh);
-                font-weight: 700;
-            }
+      /* ── Variables globales ── */
+      :root {
+        --bg:           #fefefe;
+        --color-text:   rgb(64, 64, 64);
+        --color-muted:  rgb(102, 102, 102);
+        --accent:       #e8571a;
+        --border:       silver;
+        --serif:        "Spectral", serif;
+        --sans:         "Georama", sans-serif;
+      }
 
-            nav { border-width: 0 0 1px; margin-bottom:4.5vh;}
-            footer { border-width: 1px 0 0; margin-top: 20vh; }
+      /* ── Base ── */
+      body {
+        background: var(--bg);
+        font-family: var(--serif);
+        color: var(--color-text);
+        font-size: 1.25rem;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
 
-            nav > div,
-            footer > div {
-                width: 90%;
-                max-width: 980px;
-                margin: 0 auto;
-                padding: calc(0.6rem + 0.4vw) 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+      /* ── Nav y Footer comparten estructura de layout ── */
+      nav,
+      footer {
+        border-color: var(--border);
+        border-style: solid;
+        font-family: var(--sans);
+        font-size: calc(0.5rem + 0.5vw + 0.5vh);
+        font-weight: 700;
+      }
 
-            nav div span:first-child {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                letter-spacing: 0.05vw;
-            }
+      nav    { border-width: 0 0 1px; margin-bottom: 4.5vh; }
+      footer { border-width: 1px 0 0; margin-top: 20vh; }
 
-            footer div {
-                letter-spacing: 0.05vw;
-                font-size:0.8rem;
-            }
+      nav > div,
+      footer > div {
+        width: 90%;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: calc(0.6rem + 0.4vw) 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
+      nav div span:first-child {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        letter-spacing: 0.05vw;
+      }
 
-            /* ── Estilos de enlace ── */
+      footer div {
+        font-size: 0.8rem;
+        letter-spacing: 0.05vw;
+      }
 
-            a {
-                color: var(--color-text);
-                text-decoration: underline;
-                text-underline-offset: 2px;
-                text-decoration-thickness: 1px;
-                text-decoration-style: dotted;
-            }
+      /* ── Enlace ── */
+      a {
+        color: var(--color-text);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-style: dotted;
+      }
 
-            a:hover {
-                text-decoration: none;
-                color: black;
-            }
+      a:hover {
+        text-decoration: none;
+        color: black;
+      }
 
-            /* ── Cabecera ── */
+      /* ── Cabecera ── */
+      header {
+        width: 95%;
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+        text-align: center;
+        font-family: var(--sans);
+      }
 
-            header {
-                width: 95%;
-                max-width: 42rem;
-                margin: 0 auto;
-                padding: 0 1rem;
-                text-align: center;
-                font-family: var(--sans);
-            }
+      header img {
+        width: calc(100% + 2rem);
+        height: auto;
+        margin: 0 -1rem;
+      }
 
-            header img {
-                width: calc(100% + 2rem);
-                height: auto;
-                margin: 0 -1rem;
-            }
+      header a { text-decoration: none; }
 
-            header a {
-                text-decoration: none;
-            }
+      header a:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-style: dotted;
+      }
 
-            header a:hover {
-                text-decoration: underline;
-                text-underline-offset: 2px;
-                text-decoration-thickness: 1px;
-                text-decoration-style: dotted;
-            }
+      /* ── Metadatos de cabecera ── */
+      address,
+      time {
+        font-size: 0.875rem;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1;
+        color: var(--color-muted);
+      }
 
+      address { margin-top: 2.5rem; }
 
-            /* ── Metadatos de la cabecera ── */
+      address a { font-weight: 600; }
 
-            address,
-            time {
-                font-size: 0.875rem;
-                font-weight: 400;
-                font-style: normal;
-                line-height: 1;
-                color: var(--color-muted);
-            }
+      time {
+        margin: 0.5rem 0 2.5rem;
+        display: block;
+      }
 
-            address {
-                margin-top: 2.5rem;
-            }
+      /* ── Artículo principal ── */
+      main {
+        width: 95%;
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
 
-            address a {
-                font-weight: 600;
-            }
+      /* ── Jerarquía tipográfica ── */
+      h1 {
+        font-weight: 700;
+        font-size: calc(1.75rem + 0.25vh + 0.5vw);
+        letter-spacing: 0.05rem;
+        line-height: 1;
+        margin: 0.6rem 0 0.3rem;
+        color: var(--color-text);
+      }
 
-            time {
-                margin: 0.5rem 0 2.5rem;
-                display: block;
-            }
+      h2 {
+        font-size: calc(0.8rem + 0.2vh + 0.4vw);
+        font-weight: 300;
+        letter-spacing: 0.025rem;
+        line-height: 1.4;
+        color: var(--color-text);
+      }
 
-            /* ── Artículo ── */
+      h3 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--color-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+      }
 
-            main {
-                width: 95%;
-                max-width: 42rem;
-                margin: 0 auto;
-                padding: 0 1.5rem;
-            }
+      h4,
+      h5 {
+        font-family: var(--sans);
+        font-weight: 700;
+        color: var(--color-text);
+        letter-spacing: 0.05rem;
+        line-height: 1.3;
+      }
 
+      h4 { margin: 2rem 0 0;  font-size: calc(0.825rem + 0.25vh + 0.25vw); }
+      h5 { margin: 4rem 0 0;  font-size: calc(0.65rem  + 0.25vh + 0.25vw); }
 
-            /* ── Jerarquía tipográfica ── */
+      /* ── Cuerpo del texto ── */
+      p {
+        font-family: var(--serif);
+        color: var(--color-text);
+        margin: 1.2rem 0;
+      }
 
-            h1 {
-                font-weight: 700;
-                font-size: calc(1.75rem + 0.25vh + 0.5vw);
-                letter-spacing: 0.05rem;
-                line-height: 1;
-                margin: 0.6rem 0 0.3rem 0;
-                color: var(--color-text);
-            }
+      p small { font-weight: 500; }
 
-            h2 {
-                font-size: calc(0.8rem + 0.2vh + 0.4vw);
-                font-weight: 300;
-                letter-spacing: 0.025rem;
-                line-height: 1.4;
-                color: var(--color-text);
-            }
+      em {
+        font-weight: 600;
+        font-style: normal;
+      }
 
-            h3 {
-                font-size: 0.875rem;
-                font-weight: 700;
-                color: var(--color-muted);
-                text-transform: uppercase;
-                letter-spacing: 0.1rem;
-            }
+      h4 + p { margin: 0.6rem 0 1.2rem; }
 
-            h4, h5 {
-                font-family: var(--sans);
-                font-weight: 700;
-                color: var(--color-text);
-                letter-spacing: 0.05rem;
-                line-height: 1.3;
-            }
+      h5 + p {
+        font-family: var(--sans);
+        font-size: 0.8rem;
+        margin: 0.3rem 0 1.2rem;
+      }
 
-            h4 { margin: 2rem 0 0; font-size: calc(0.825rem + 0.25vh + 0.25vw); }
+      ul {
+        margin: 0 0 1.1rem;
+        padding: 0;
+        list-style: none;
+        font-size: 90%;
+      }
 
-            h5 { margin: 4rem 0 0;font-size: calc(0.65rem + 0.25vh + 0.25vw); }
+      ul li {
+        margin-bottom: 0.25rem;
+        padding-left: 1.25rem;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>') no-repeat left center / 1rem 1rem;
+      }
 
-            /* ── Cuerpo del texto ── */
+      /* ── Figura con gráfico ── */
+      figure {
+        margin: 2rem -1.5rem;
+        background: white;
+        padding: 1.5rem;
+        border: 2px solid #eee;
+        border-radius: 4px;
+      }
 
-            p {
-                font-family: var(--serif);
-                color: var(--color-text);
-                margin: 1.2rem 0;
-            }
+      figure figcaption {
+        font-family: var(--sans);
+        color: var(--color-muted);
+        font-size: 0.8rem;
+        font-weight: 300;
+        line-height: 1.4;
+        margin-top: 1rem;
+        padding-top: 0.75rem;
+        letter-spacing: 0.1rem;
+      }
 
-            p small {
-                font-weight: 500;
-            }
+      /* ── Wrapper para imágenes SVG centradas ── */
+      .img-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin: 1.5rem auto;
+        text-align: center;
+      }
 
-            em {
-                font-weight: 600;
-                font-style: normal;
-            }
+      .img-wrapper img {
+        width: 100%;
+        height: auto;
+      }
 
-            h4 + p {
-                margin: 0.6rem 0 1.2rem;
-            }
+      /* ── Buscador ── */
+      #seccion-buscador {
+        margin: 2.5rem 0;
+      }
 
-            h5 + p {
-                font-family: var(--sans);
-                font-size:0.8rem;
-                margin: 0.3rem 0 1.2rem;
-            }
+      #buscador {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #000;
+        border-radius: 4px;
+        font-family: var(--serif);
+        font-size: 1rem;
+      }
 
-            ul {
-                margin: 0 0 1.1rem;
-                padding: 0;
-                list-style: none;
-                font-size: 90%;
-            }
+      .tabla-wrapper {
+        height: 500px;
+        overflow-y: auto;
+        overflow-x: auto;
+        border: 1px solid #ffc6cc;
+        border-radius: 4px;
+      }
 
-            ul li {
-                margin-bottom: 0.25rem;
-                padding-left: 1.25rem;
-                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>');
-                background-repeat: no-repeat;
-                background-size: 1rem 1rem;
-                background-position-y: center;
-            }
+      .tabla-wrapper table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-family: var(--serif);
+      }
 
+      .tabla-wrapper thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: #ffc6cc;
+      }
 
-            /* ── Figura que contiene el gráfico ── */
+      .tabla-wrapper th {
+        padding: 12px;
+        border-bottom: 2px solid #ffc6cc;
+      }
 
-            figure {
-                margin: 2rem -1.5rem;
-                background: white;
-                padding: 1.5rem;
-                border: 2px solid #eee;
-                border-radius: 4px;
-            }
+      .tabla-wrapper td {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+    </style>
+  </head>
 
-            figure figcaption {
-                font-family: var(--sans);
-                color: var(--color-muted);
-                font-size: 0.8rem;
-                font-weight: 300;
-                line-height: 1.4;
-                margin-top: 1rem;
-                padding-top: 0.75rem;
-                letter-spacing: 0.1rem;
-            }
-        </style>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
-    </head>
-    <body>
-        <nav>
-            <div>
-              <span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" viewBox="0 0 100 100" fill="#861d1d">
-        <path d="M21.6,10.73a35.61,35.61,0,0,0,0,50.18,1.13,1.13,0,0,1,0,1.48L19,64.85a.75.75,0,0,1-.73.37,1.07,1.07,0,0,1-.74-.37,41.29,41.29,0,0,1,0-58.06,1.07,1.07,0,0,1,.74-.37.75.75,0,0,1,.73.37L21.6,9.25A1.12,1.12,0,0,1,21.6,10.73Zm11.68,38.5-2.46,2.46a.92.92,0,0,1-1.47,0,22.26,22.26,0,0,1,0-31.74.92.92,0,0,1,1.47,0l2.46,2.46a1,1,0,0,1,0,1.48,17.45,17.45,0,0,0-4.79,11.93,15.91,15.91,0,0,0,4.79,11.93.93.93,0,0,1,0,1.48ZM53,43.2,66.37,94H61.45L49.64,48.86,45.58,64h4.06l1.23,5.16H44.23L41.4,80H53.33l1.23,5.16H40.05L37.71,94H32.79L46.2,43.08a7.53,7.53,0,0,1-4.31-6.89,7.62,7.62,0,0,1,7.75-7.63,7.51,7.51,0,0,1,7.63,7.63A7.73,7.73,0,0,1,53,43.2ZM70.55,20a22.29,22.29,0,0,1,0,31.74.92.92,0,0,1-1.47,0l-2.46-2.46a.92.92,0,0,1,0-1.48,15.91,15.91,0,0,0,4.79-11.93,17.23,17.23,0,0,0-4.79-11.93,1,1,0,0,1,0-1.48L69.08,20a.92.92,0,0,1,1.47,0ZM94.17,35.82a41.51,41.51,0,0,1-11.93,29,1.11,1.11,0,0,1-.74.37.75.75,0,0,1-.74-.37l-2.58-2.46a1.13,1.13,0,0,1,0-1.48,35.63,35.63,0,0,0,0-50.18,1.12,1.12,0,0,1,0-1.48l2.58-2.46a.75.75,0,0,1,.74-.37,1.11,1.11,0,0,1,.74.37A41.72,41.72,0,0,1,94.17,35.82Z" />
-    </svg>
-    InDisV
-</span>
+  <body>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                </svg>
-            </div>
-        </nav>
-        
-        <header>
-            <img src="portada.jpg" alt="Portada de Electivos Perdidos" style="max-width: 100%; height: auto;">
-            <h1>Problemática de Diseño: Electivos</h1>
-            <h2>Electivos con poca variedad dentro la mención Visualidad y Medios en la Universidad de Chile</h2>
-            <address>Por <a href="#">Valentina Alcota,</a> <a href="#">Romina Cancino,</a> <a href="#">Gastón Meneses</a> y <a href="#">Felipe Cortez</a></address>
-            <time>Publicado el 23 de Junio, 2026 06:00 p.m. GMT-4</time>
-        </header>
+    <!-- ═══════════════════════════════════════════
+         NAV
+    ═══════════════════════════════════════════ -->
+    <nav>
+      <div>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" viewBox="0 0 100 100" fill="#861d1d">
+            <path d="M21.6,10.73a35.61,35.61,0,0,0,0,50.18,1.13,1.13,0,0,1,0,1.48L19,64.85a.75.75,0,0,1-.73.37,1.07,1.07,0,0,1-.74-.37,41.29,41.29,0,0,1,0-58.06,1.07,1.07,0,0,1,.74-.37.75.75,0,0,1,.73.37L21.6,9.25A1.12,1.12,0,0,1,21.6,10.73Zm11.68,38.5-2.46,2.46a.92.92,0,0,1-1.47,0,22.26,22.26,0,0,1,0-31.74.92.92,0,0,1,1.47,0l2.46,2.46a1,1,0,0,1,0,1.48,17.45,17.45,0,0,0-4.79,11.93,15.91,15.91,0,0,0,4.79,11.93.93.93,0,0,1,0,1.48ZM53,43.2,66.37,94H61.45L49.64,48.86,45.58,64h4.06l1.23,5.16H44.23L41.4,80H53.33l1.23,5.16H40.05L37.71,94H32.79L46.2,43.08a7.53,7.53,0,0,1-4.31-6.89,7.62,7.62,0,0,1,7.75-7.63,7.51,7.51,0,0,1,7.63,7.63A7.73,7.73,0,0,1,53,43.2ZM70.55,20a22.29,22.29,0,0,1,0,31.74.92.92,0,0,1-1.47,0l-2.46-2.46a.92.92,0,0,1,0-1.48,15.91,15.91,0,0,0,4.79-11.93,17.23,17.23,0,0,0-4.79-11.93,1,1,0,0,1,0-1.48L69.08,20a.92.92,0,0,1,1.47,0ZM94.17,35.82a41.51,41.51,0,0,1-11.93,29,1.11,1.11,0,0,1-.74.37.75.75,0,0,1-.74-.37l-2.58-2.46a1.13,1.13,0,0,1,0-1.48,35.63,35.63,0,0,0,0-50.18,1.12,1.12,0,0,1,0-1.48l2.58-2.46a.75.75,0,0,1,.74-.37,1.11,1.11,0,0,1,.74.37A41.72,41.72,0,0,1,94.17,35.82Z" />
+          </svg>
+          InDisV
+        </span>
 
-        
-        <main id="contenedor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+        </svg>
+      </div>
+    </nav>
 
-            <p>En la Facultad de Arquitectura y Urbanismo de la Universidad de Chile, se imparte la carrera de Diseño, la cual, a partir del tercer año, los estudiantes pueden elegir la mención y el camino que van a tomar para consolidar su carrera y egresarse respectivamente. Los estudiantes pueden optar por:</p>
-            <ul>
-                <li><em>Título profesional de Diseñador(a) Industrial:</em> Mención Industrial y Servicios.</li>
-                <li><em>Título profesional de Disñador(a) Gráfico(a):</em> Mención en Visualidad y Medios.</li>
-            </ul>
-        <p>Para esto, por ende, se ha creado una malla curricular que se basa un plan de estudios recientemente innovado, de manera de asegurar su pertinencia con los tiempos actuales marcados por la globalización, el desarrollo tecnológico y la protección ambiental. Esta situación, que ha abierto nuevas áreas de desempeño profesional para los diseñadores, también obliga a un perfeccionamiento continuo donde el aprender a aprender adquiere un carácter relevante. (Universidad de Chile, 2026.)</p>
+    <!-- ═══════════════════════════════════════════
+         CABECERA
+    ═══════════════════════════════════════════ -->
+    <header>
+      <img src="portada.jpg" alt="Portada de Electivos Perdidos" />
+      <h1>Problemática de Diseño: Electivos</h1>
+      <h2>Electivos con poca variedad dentro la mención Visualidad y Medios en la Universidad de Chile</h2>
+      <address>
+        Por <a href="#">Valentina Alcota,</a>
+        <a href="#">Romina Cancino,</a>
+        <a href="#">Gastón Meneses</a>
+        y <a href="#">Felipe Cortez</a>
+      </address>
+      <time>Publicado el 23 de Junio, 2026 06:00 p.m. GMT-4</time>
+    </header>
 
-            <p>Dicha <a href="https://drive.google.com/file/d/1kC9xYUbKkL99kAaEN-HOufKv01lqKgTC/view?usp=sharing" target="_blank">malla curricular</a> establece y permite que los estudiantes opten por ramos electivos, los cuales, como lo dice su propio nombre, pueden ser elegidos a preferencia y deseo del estudiante, dependiendo qué es lo que cree que le convendrá de mejor manera a su formación profesional y los horarios disponibles.</p>
- <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: center;">
-  <img src="gráfico total electivos.svg" alt="Diagrama aluvial de la mención Visualidad y Medios" style="width: 100%; height: auto;">
-</div>     
-            
- <figcaption> Gráfico aluvial con el total de electivos creados para la mención de visualidad y medios </figcaption>
+    <!-- ═══════════════════════════════════════════
+         CONTENIDO PRINCIPAL
+    ═══════════════════════════════════════════ -->
+    <main id="contenedor">
 
+      <p>En la Facultad de Arquitectura y Urbanismo de la Universidad de Chile, se imparte la carrera de Diseño, la cual, a partir del tercer año, los estudiantes pueden elegir la mención y el camino que van a tomar para consolidar su carrera y egresarse respectivamente. Los estudiantes pueden optar por:</p>
+
+      <ul>
+        <li><em>Título profesional de Diseñador(a) Industrial:</em> Mención Industrial y Servicios.</li>
+        <li><em>Título profesional de Diseñador(a) Gráfico(a):</em> Mención en Visualidad y Medios.</li>
+      </ul>
+
+      <p>Para esto, por ende, se ha creado una malla curricular que se basa un plan de estudios recientemente innovado, de manera de asegurar su pertinencia con los tiempos actuales marcados por la globalización, el desarrollo tecnológico y la protección ambiental. Esta situación, que ha abierto nuevas áreas de desempeño profesional para los diseñadores, también obliga a un perfeccionamiento continuo donde el aprender a aprender adquiere un carácter relevante. (Universidad de Chile, 2026.)</p>
+
+      <p>Dicha <a href="https://drive.google.com/file/d/1kC9xYUbKkL99kAaEN-HOufKv01lqKgTC/view?usp=sharing" target="_blank">malla curricular</a> establece y permite que los estudiantes opten por ramos electivos, los cuales, como lo dice su propio nombre, pueden ser elegidos a preferencia y deseo del estudiante, dependiendo qué es lo que cree que le convendrá de mejor manera a su formación profesional y los horarios disponibles.</p>
+
+      <figure>
+        <div class="img-wrapper">
+          <img src="gráfico total electivos.svg" alt="Diagrama aluvial de la mención Visualidad y Medios" />
+        </div>
+        <figcaption>Gráfico aluvial con el total de electivos creados para la mención de Visualidad y Medios.</figcaption>
+      </figure>
 
       <p>Los electivos libres son rotatorios semestre a semestre, sin embargo, dentro del último tiempo, los electivos disponibles para los alumnos muestran tendencias priorizadas.</p>
-            
-  <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: center;">
-  <img src="SUNBURST DIAGRAM.svg" alt="SUNBURST DIAGRAM" style="width: 100%; height: auto;">
-</div>                
-     
-           <p>Al rastrear el volumen de los electivos actualmente impartidos en la Universidad de Chile, se revela un claro centro de gravedad. Como se observa en el gráfico, una proporción dominante de los flujos académicos y la concentración de asignaturas convergen hacia un mismo núcleo: tipografía y  producción editorial. </p>
-            
-           <figure>
-                <div style="width: 100%; max-width: 800px; margin: 0 auto;">
-  <canvas id="graficoBarras"></canvas>
-</div>
-                <figcaption>
-               Grafico con los 3 principales grupos de electivos en los últimos años, analizando el enfoque editorial versus otras disciplinas.
-                </figcaption>
-            </figure>
-            <p>  La gráfica evidencia que, aunque la teoría divide la disciplina en múltiples áreas de estudio, la oferta real de asignaturas tiende a fusionar ambos conceptos.</p>
-            
-            <p>Para visualizar patrones en estructuras complejas, los <a href="https://datavizcatalogue.com/ES/metodos/diagrama_de_dispersion.html" target="_blank">diagramas de distribución</a> resultan idóneos. Al proyectar una colección de puntos mediante coordenadas cartesianas, el cruce de las variables en los ejes horizontal y vertical permite detectar la presencia y fuerza de una correlación entre ambas.</p>
 
-            <p>Al trazar una línea de mejor ajuste entre el programa de menor costo y acreditación básica (Diseño de Interiores y Ambientes en la <small>UNIACC</small>) hasta la opción de mayor costo y acreditación (Diseño en la <small>PUC</small>), se observa una pendiente ascendente en la distribución de los puntos. Si bien esto sugiere una correlación positiva, donde un mayor número de años de acreditación tiende a coincidir con aranceles más altos, la fuerza de correlación de débil y los valores atípicos son varios.</p>
-<div class="chart-wrapper">
+      <figure>
+        <div class="img-wrapper">
+          <img src="SUNBURST DIAGRAM.svg" alt="Diagrama sunburst de distribución de electivos" />
+        </div>
+        <figcaption>Diagrama sunburst con la distribución de electivos por área temática.</figcaption>
+      </figure>
+
+      <p>Al rastrear el volumen de los electivos actualmente impartidos en la Universidad de Chile, se revela un claro centro de gravedad. Como se observa en el gráfico, una proporción dominante de los flujos académicos y la concentración de asignaturas convergen hacia un mismo núcleo: tipografía y producción editorial.</p>
+
+      <!-- Gráfico de barras: Enfoque editorial vs otras disciplinas -->
+      <figure>
+        <canvas id="graficoBarras"></canvas>
+        <figcaption>Los 3 principales grupos de electivos en los últimos años, analizando el enfoque editorial versus otras disciplinas.</figcaption>
+      </figure>
+
+      <p>La gráfica evidencia que, aunque la teoría divide la disciplina en múltiples áreas de estudio, la oferta real de asignaturas tiende a fusionar ambos conceptos.</p>
+
+      <p>Para visualizar patrones en estructuras complejas, los <a href="https://datavizcatalogue.com/ES/metodos/diagrama_de_dispersion.html" target="_blank">diagramas de distribución</a> resultan idóneos. Al proyectar una colección de puntos mediante coordenadas cartesianas, el cruce de las variables en los ejes horizontal y vertical permite detectar la presencia y fuerza de una correlación entre ambas.</p>
+
+      <p>Al trazar una línea de mejor ajuste entre el programa de menor costo y acreditación básica (Diseño de Interiores y Ambientes en la <small>UNIACC</small>) hasta la opción de mayor costo y acreditación (Diseño en la <small>PUC</small>), se observa una pendiente ascendente en la distribución de los puntos. Si bien esto sugiere una correlación positiva, donde un mayor número de años de acreditación tiende a coincidir con aranceles más altos, la fuerza de correlación es débil y los valores atípicos son varios.</p>
+
+      <!-- Gráfico de torta: Distribución por foco académico -->
+      <figure>
         <canvas id="graficoFocos"></canvas>
-    </div>
+        <figcaption>Distribución de asignaturas por foco académico: Ciencia y Tecnología, Comunicación y Gestión, y Morfología.</figcaption>
+      </figure>
 
-    <script>
-        // Estructura de datos extraída de tu PDF
-        const data = {
-          labels: [
-            'Ciencia y Tecnología', 
-            'Comunicación y Gestión', 
-            'Morfología'
-          ],
-          datasets: [{
-            label: 'Cantidad de Asignaturas',
-            data: [21, 19, 16],
-            backgroundColor: [
-              'rgba(106, 90, 205, 0.75)',  // Morado Principal
-              'rgba(186, 85, 211, 0.7)',   // Lila Claro
-              'rgba(100, 149, 237, 0.75)'  // Azul Pastel
-            ],
-            borderColor: [
-              'rgba(106, 90, 205, 1)',
-              'rgba(186, 85, 211, 1)',
-              'rgba(100, 149, 237, 1)'
-            ],
-            borderWidth: 1.5
-          }]
-        };
+      <h4>Historial de Electivos</h4>
 
-        // Configuración para el gráfico Pie
-        const config = {
-          type: 'pie',
-          data: data,
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'right'
-              },
-              title: {
-                display: true,
-                text: 'Distribución de Asignaturas por Foco'
-              }
-            }
-          }
-        };
+      <p>Hasta ahora hemos evidenciado la fuerte concentración hacia el diseño impreso y tipográfico mediante visualizaciones macro. Sin embargo, para comprender la verdadera dimensión de la oferta académica, es necesario abrir el catálogo en su totalidad. En la siguiente tabla dinámica se compila el registro completo de los electivos creados para la carrera de Diseño. Estos electivos presentan 3 categorías: Industrial y Servicios, Ambas Menciones y Visualidad y Medios.</p>
 
-        // Renderizar el gráfico en el navegador
-        const ctx = document.getElementById('graficoFocos').getContext('2d');
-        new Chart(ctx, config);
-    </script>
+      <section id="seccion-buscador">
+        <h3>Buscador de Electivos</h3>
+        <input type="text" id="buscador" placeholder="Escribe para buscar un electivo…" />
 
+        <div class="tabla-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Electivo</th>
+                <th>Mención</th>
+                <th>Código</th>
+                <th>Créditos</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla"></tbody>
+          </table>
+        </div>
+      </section>
 
-            <h4> Historial de Electivos </h4>
+      <h5>Fuentes</h5>
+      <p>Plataformas oficiales de la Universidad de Chile</p>
+      <p><a href="https://fau.uchile.cl/carreras/diseno/malla-curricular" target="_blank">FAU - UChile</a></p>
+      <p><a href="https://ucampus.uchile.cl/m/fcfm_catalogo/?semestre=20261&depto=12060003" target="_blank">Ucampus - Catálogo de cursos</a></p>
+      <p><a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank">Reglamento Carrera de Diseño - FAU - UChile</a></p>
 
-            <p> Hasta ahora hemos evidenciado la fuerte concentración hacia el diseño impreso y tipográfico mediante visualizaciones macro. Sin embargo, para comprender la verdadera dimensión de la oferta académica, es necesario abrir el catálogo en su totalidad. En la siguiente tabla dinámica se compila el registro completo de los electivos creados para la carrera de Diseño. Estos electivos presentan 3 categorías: Industrial y Servicios, Ambas Menciones y Visualidad y Medios. 
-   </p>    
-            <section id="seccion-buscador" style="margin: 40px 0;">
-                <h3 style="font-family: var(--serif);">Buscador de Electivos</h3>
-                <input type="text" id="buscador" placeholder="Escribe para buscar un electivo..." 
-                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #000; border-radius: 4px; font-family: var(--serif); font-size: 1rem;">
-            
-                <div style="height: 500px; overflow-y: auto; overflow-x: auto; border: 1px solid #FFC6CC; border-radius: 4px;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-family: var(--serif);">
-                        
-                        <thead style="position: sticky; top: 0; z-index: 1; background-color: #FFC6CC;">
-                            <tr>
-                                <th style="padding: 12px; border-bottom: 2px solid #FFC6CC;">Electivo</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #FFC6CC;">Mención</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #FFC6CC;">Código</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #FFC6CC;">Créditos</th>
-                            </tr>
-                        </thead>
-                    <tbody id="cuerpoTabla">
-        
-                    </tbody>
-                </table>
-            </div>
-            </section>
-        
-            <h5>Fuentes</h5>
-            <p> Plataformas oficiales de la Universidad de Chile</p>
-             <p>  <a href="https://fau.uchile.cl/carreras/diseno/malla-curricular" target="_blank">FAU - UChile</a></p>
-            <p>  <a href="https://ucampus.uchile.cl/m/fcfm_catalogo/?semestre=20261&depto=12060003" target="_blank">Ucampus - Catálogo de cursos</a></p>
-             <p>  <a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank">Reglamento Carrera de Diseño - FAU - Uchile</a></p>
-        </main>
+    </main>
 
-        <footer>
-            <div>
-                <a href="https://www.reuters.com/graphics/IRAN-CRISIS/OIL-CONSUMERS/akpeyynmypr/" target="_blank"
-                    >Inspirado en Reuters</a>
-                <a href="https://github.com/profesorfaco/troncal">Diseño y visualización de información</a>
-            </div>
-        </footer>
-       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-        <script> 
-  const data = {
-    labels: ['Percepción y Semiótica', 'Curaduría y Narrativas', 'Experimentación y Crítica'],
-    datasets: [
-      {
-        label: 'Enfoque Editorial / Tipográfico',
-        data: [2, 3, 0], 
-        backgroundColor: '#54060E', 
-        borderWidth: 0
-      },
-      {
-        label: 'Otras Disciplinas',
-        data: [4, 3, 6], 
-        backgroundColor: '#FFC6CC', 
-        borderWidth: 0
-      }
-    ]
-  };
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer>
+      <div>
+        <a href="https://www.reuters.com/graphics/IRAN-CRISIS/OIL-CONSUMERS/akpeyynmypr/" target="_blank">Inspirado en Reuters</a>
+        <a href="https://github.com/profesorfaco/troncal">Diseño y visualización de información</a>
+      </div>
+    </footer>
 
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: '¿Visualidad y Medios es igual a Diseño Editorial?',
-          font: {
-            size: 16,
-            family: "'Helvetica Neue', 'Arial', sans-serif",
-            weight: 'bold'
-          },
-          padding: {
-            top: 10,
-            bottom: 20
-          }
-        },
-        tooltip: {
-          mode: 'index',
-          intersect: false
-        }
-      },
-      scales: {
-        x: {
-          stacked: true,
-          grid: {
-            display: false
-          }
-        },
-        y: {
-          stacked: true,
-          title: {
-            display: true,
-            text: 'Cantidad de Electivos Totales'
-          },
-          ticks: {
-            stepSize: 1
-          }
-        }
-      }
-    }
-  };
+    <!-- Script principal — cargado al final del body para garantizar que el DOM esté listo -->
+    <script src="script.js"></script>
 
-
- const baseDeDatos = [
-  {
-    "N° REAL REAL": 1,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Materiales y procesos industriales, desde una perspectiva de ciclo de la vida",
-    "COD.": "AUD5I006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 2,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Bocetaje avanzado para el diseño del producto",
-    "COD.": "AUD5I007",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 3,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales II, modelamiento paramétrico",
-    "COD.": "AUD5I008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 4,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Teoría y práctica del diseño de calzado",
-    "COD.": "AUD5I009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 5,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Innovación para la sostenibilidad",
-    "COD.": "AUD5I010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 6,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Procesos avanzados de fabricación",
-    "COD.": "AUD5I011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 7,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Comunicación, prototipado e implementación de servicios",
-    "COD.": "AUD5I012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 8,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Biobased materials for the built environment",
-    "COD.": "AUD5I013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 9,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Design sketching. Bocetaje para Diseñadores Industriales",
-    "COD.": "AUD5I014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 10,
-    "MENCIÓN": "mención I y S",
-    "ELECTIVO": "Diseño de accesorios con reinvención de materiales",
-    "COD.": "AUD5I015",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 11,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales III. Análisis y fabricación avanzada asistidos por computador",
-    "COD.": "AUD5I016",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 12,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Complementos sostenibles y Joyería contemporánea",
-    "COD.": "AUD5I017",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 13,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Creatividad para el Diseño industrial y servicios",
-    "COD.": "AUD5I018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 14,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Exploración creativa con los materiales y sus tecnologías",
-    "COD.": "AUD5I019",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 15,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Enfoques investigativos en Diseño, innovación y creatividad",
-    "COD.": "AUD5I020, AUD5V020",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 16,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Introducción al Desarrollo Front End con HTML, CSS y JavaScript",
-    "COD.": "AUD5I021, AUD5V021",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 17,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño de interfaz electrónica mediante Arduino",
-    "COD.": "AUD5I022",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 18,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Gamificación para el Diseño industrial y servicios",
-    "COD.": "AUD5I023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 19,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Laboratorio de oficios contemporáneos",
-    "COD.": "AUD5I024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 20,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "BattleBots: Interfacultades",
-    "COD.": "AUD5I025",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 21,
-    "MENCIÓN": "Troncal mención I y S",
-    "ELECTIVO": "Prototipado y comunicación de experiencias y servicios",
-    "COD.": "AUD5I026",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 22,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Técnicas de intervención y experimentación textil",
-    "COD.": "AUD5I027",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 23,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Patrimonio y restauración arquitectónica",
-    "COD.": "AUD5I028, AUDIV042",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 24,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Gestión y producción de arquitectura interior",
-    "COD.": "AUD5I029",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 25,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Artesanías: cultura, técnica y producto.",
-    "COD.": "AUD5I031",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 26,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Construcción en madera",
-    "COD.": "AUD5I032",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 27,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Arquitectura sin Residuos - Diseño, Prefabricación e Industrialización",
-    "COD.": "AUD5I033",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 28,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Introducción a la programación para el Diseño de interacción",
-    "COD.": "AUD5V0010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 29,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Animación Digital",
-    "COD.": "AUD5V0011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 30,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Introducción a la Ilustración",
-    "COD.": "AUD5V0012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 31,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño editorial",
-    "COD.": "AUD5V006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 32,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Lenguaje y composición fotográfica para el diseño",
-    "COD.": "AUD5V007, AUD5V010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 33,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Infografía",
-    "COD.": "AUD5V008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 34,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Tipografía",
-    "COD.": "AUD5V009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 35,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Tipografía: cultura y sociedad",
-    "COD.": "AUD5V011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 36,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño y Cultura Visual en Chile",
-    "COD.": "AUD5V012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 37,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Creatividad y diseño",
-    "COD.": "AUD5V013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 38,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Programación web e introducción a la animación digital",
-    "COD.": "AUD5V014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 39,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Puesta en valor desde el diseño patrimonio identidad y cultura",
-    "COD.": "AUD5V022",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 40,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Publicaciones editoriales experimentales",
-    "COD.": "AUD5V023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 41,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño editorial: de la creación a la publicación",
-    "COD.": "AUD5V024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 42,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño Gráfico para industrias culturales",
-    "COD.": "AUD5V025",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 43,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Taller de Ilustración",
-    "COD.": "AUD5V026",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 44,
-    "MENCIÓN": "Troncal mención V y M",
-    "ELECTIVO": "Diseño y visualización de información",
-    "COD.": "AUD5V027",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 45,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Representación arquitectónica mediante técnicas gráficas tradicionales",
-    "COD.": "AUD5V028, AUDIV030",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 46,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Materiales cerámicos y metales desde una perspectiva del ciclo de vida",
-    "COD.": "AUD6I006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 47,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño de productos y servicios basado en la experiencia y las emociones",
-    "COD.": "AUD6I007",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 48,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales: representación y simulación",
-    "COD.": "AUD6I008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 49,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Materiales y Diseño industrial I. Fundamentos",
-    "COD.": "AUD6I009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 50,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Historia y Teoría de la moda",
-    "COD.": "AUD6I010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 51,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño y patrimonio, Técnicas artesanales tradicionales y contemporánea",
-    "COD.": "AUD6I012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 52,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño y Sustentabilidad para la Economía Circular",
-    "COD.": "AUD6I013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 53,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño y energías renovables",
-    "COD.": "AUD6I014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 54,
-    "MENCIÓN": "Troncal mención I y S",
-    "ELECTIVO": "Modelamiento y representación digital",
-    "COD.": "AUD6I015",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 55,
-    "MENCIÓN": "Troncal mención I y S",
-    "ELECTIVO": "Materiales, tecnologías y Procesos de fabricación",
-    "COD.": "AUD6I016",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 56,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Tensoestructuras",
-    "COD.": "AUD6I017, AUDIV043",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 57,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño y construcción sustentable con madera masiva",
-    "COD.": "AUD6I018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 58,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño de vehículos",
-    "COD.": "AUD6I019, AUDIV059",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 59,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Introducción al moldaje y sistemas de representación textil",
-    "COD.": "AUD6I020",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 60,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Taller de metalmecánica para diseñadores",
-    "COD.": "AUD6I021",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 61,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Inteligencia Artificial aplicada a la Gestión de Proyectos de Diseño",
-    "COD.": "AUD6I023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 62,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Biomecánica e innovación aplicada al diseño ortopédico para seres vivos, a través de manufactura aditiva, impresión 3D y materiales compuestos",
-    "COD.": "AUD6I024, AUD5I030, AUD7I026",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 63,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño de vídeo juegos",
-    "COD.": "AUD6V006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 64,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Ilustración editorial",
-    "COD.": "AUD6V007",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 65,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Mapeo colectivo: Diseño y territorio",
-    "COD.": "AUD6V008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 66,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño de Contexto y el viaje del cliente",
-    "COD.": "AUD6V009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 67,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Fundamentos fotográficos",
-    "COD.": "AUD6V010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 68,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Introducción a la producción gráfica",
-    "COD.": "AUD6V011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 69,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Vanguardias racionales-constructivas: Diseño y proyectualidad en América Latina y Chile",
-    "COD.": "AUD6V012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 70,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Creación y Diseño de personajes para proyectos de animación",
-    "COD.": "AUD6V013, AUD7V010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 71,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Análisis de problemas informáticos en Diseño",
-    "COD.": "AUD6V014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 72,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Producción Gráfica 2.0 Editorial y Packaging",
-    "COD.": "AUD6V015",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 73,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Estética e industrias culturales",
-    "COD.": "AUD6V016",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 74,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Libro de artista, teoría y práctica",
-    "COD.": "AUD6V017",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 75,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Educación tipográfica",
-    "COD.": "AUD6V018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 76,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño y pensamiento crítico",
-    "COD.": "AUD6V019",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 77,
-    "MENCIÓN": "Troncal mención V y M",
-    "ELECTIVO": "Diseño editorial y publicación",
-    "COD.": "AUD6V020",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 78,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Producción Editorial y usos tipográficos",
-    "COD.": "AUD6V021",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 79,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Editar-diseñar-publicar. El espacio de los discursos de la arquitectura",
-    "COD.": "AUD6V022",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 80,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño Gráfico para las Artes",
-    "COD.": "AUD6V023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 81,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Edición experimental y artes visuales. Apreciación, debates y procedimientos documentales",
-    "COD.": "AUD6V024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 82,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Iconografía de la contracultura en Chile: desde los hippies al punk (teoría y práctica)",
-    "COD.": "AUD6V025",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 83,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Inteligencia Artificial Generativa",
-    "COD.": "AUD6V026",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 84,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño de ediciones experimentales. Neovanguardias en artes y poesía visual.",
-    "COD.": "AUD6V027",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 85,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño para el ciclismo, introducción a la cultura de los objetos",
-    "COD.": "AUD7I006",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 86,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Maderas y materiales biobasados",
-    "COD.": "AUD7I007",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 87,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales. Modelado conceptual y renderizado",
-    "COD.": "AUD7I008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 88,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Producción semi-industrial para proyectos de diseño de productos y objetos",
-    "COD.": "AUD7I009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 89,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Modelos y procesos de vitrofusión en cerámica",
-    "COD.": "AUD7I010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 90,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales I. Modelamiento conceptual y representación",
-    "COD.": "AUD7I011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 91,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Mecánica y Biomecánica aplicadas al Diseño",
-    "COD.": "AUD7I012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 92,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas computacionales IV. Modelamiento generativo y representación avanzada",
-    "COD.": "AUD7I013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 93,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Emprendimiento basado en Diseño",
-    "COD.": "AUD7I014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 94,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Color, materiales y acabados para el diseño de productos y servicios",
-    "COD.": "AUD7I015",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 95,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Diseño estratégico de productos y servicios",
-    "COD.": "AUD7I016",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 96,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Creación textil participativa",
-    "COD.": "AUD7I018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 97,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Creatividad y gamificación",
-    "COD.": "AUD7I019",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 98,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Principios de estructuras, materiales compuestos y plásticos reforzados",
-    "COD.": "AUD7I020",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 99,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Herramientas de sustentabilidad textil y upcycling",
-    "COD.": "AUD7I021",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 100,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Enfoques y perspectivas disciplinares emergentes y sustentabilidad",
-    "COD.": "AUD7I022",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 101,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Experimentación textil orientada al upcycling",
-    "COD.": "AUD7I023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 102,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Introducción al Diseño de Vehículos con Realidad Virtual",
-    "COD.": "AUD7I024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 103,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Introducción al biodiseño",
-    "COD.": "AUD7I025",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 104,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Reconocimiento y diseño de superficies textiles",
-    "COD.": "AUD7I027",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 105,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Joyería contemporánea",
-    "COD.": "AUD7I028",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 106,
-    "MENCIÓN": "Mención I y S",
-    "ELECTIVO": "Ergonomía aplicada al diseño de vehículos",
-    "COD.": "AUD7I029",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 107,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "La contingencia social desde el diseño centrado en el usuario",
-    "COD.": "AUD7V006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 108,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Tipografía: Forma y función",
-    "COD.": "AUD7V007",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 109,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Animación y edición digital",
-    "COD.": "AUD7V008",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 110,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño y estrategia de publicidad y propaganda",
-    "COD.": "AUD7V009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 111,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Visualización de Datos",
-    "COD.": "AUD7V011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 112,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Cultura visual en Latinoamérica",
-    "COD.": "AUD7V012",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 113,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Diseño, afecto y género",
-    "COD.": "AUD7V013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 114,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "El discurso del afiche político: estética y praxis",
-    "COD.": "AUD7V014",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 115,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Experimentación editorial",
-    "COD.": "AUD7V015",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 116,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Color, semiótica y lenguaje",
-    "COD.": "AUD7V016",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 117,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Ux UI, Experiencia de usuario y diseño de interfaz",
-    "COD.": "AUD7V017",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 118,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Ilustración Creativa",
-    "COD.": "AUD7V018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 119,
-    "MENCIÓN": "Mencion V y M",
-    "ELECTIVO": "Oficio digital",
-    "COD.": "AUD7V019",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 120,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Lean UX: Diseño de experiencia de usuario con metodologías ágiles y Lean",
-    "COD.": "AUD7V020",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 121,
-    "MENCIÓN": "Troncal mención V y M",
-    "ELECTIVO": "Diseño de interacción y experiencia",
-    "COD.": "AUD7V021",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 122,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Patrimonio intangible y cultural popular (visual)",
-    "COD.": "AUD7V022",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 123,
-    "MENCIÓN": "Mención V y M",
-    "ELECTIVO": "Narrativa gráfica",
-    "COD.": "AUD7V024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 124,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Smart Cities, nuevas ciudades en el siglo XXI",
-    "COD.": "AUDI5029",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 125,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Emprendimiento y consultoría en diseño",
-    "COD.": "AUDIV001",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 126,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Color y percepción",
-    "COD.": "AUDIV002",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 127,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Packaging de productos",
-    "COD.": "AUDIV003",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 128,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Museografía",
-    "COD.": "AUDIV004",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 129,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Branding",
-    "COD.": "AUDIV005",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 130,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño y Montaje de Exposiciones",
-    "COD.": "AUDIV006",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 131,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Color aplicado al diseño",
-    "COD.": "AUDIV007",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 132,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Semiótica",
-    "COD.": "AUDIV008",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 133,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño y Marketing de Productos y Servicios: Propuesta para ámbitos de Marketing de Consumo, Industrial, Bien Público y Político",
-    "COD.": "AUDIV009",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 134,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Herramientas para el emprendimiento en diseño",
-    "COD.": "AUDIV010",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 135,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Introducción al diseño de packaging",
-    "COD.": "AUDIV011",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 136,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Color, anatomía y lenguaje",
-    "COD.": "AUDIV012",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 137,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño para Innovación Social",
-    "COD.": "AUDIV013",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 138,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Investigación-Acción Participativa (PAR) para el diseño",
-    "COD.": "AUDIV018",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 139,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Estrategias de Ecodiseño",
-    "COD.": "AUDIV019",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 140,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño de instrumentos musicales digitales",
-    "COD.": "AUDIV020",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 141,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Crítica cultural, visualidades feministas y disidencias",
-    "COD.": "AUDIV021",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 142,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Realidad virtual para diseño y arquitectura",
-    "COD.": "AUDIV022",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 143,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Diseño automotriz",
-    "COD.": "AUDIV023",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 144,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Internet de las cosas para vivienda social",
-    "COD.": "AUDIV024",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 145,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "La interacción del Color; su anatomía y lenguaje",
-    "COD.": "AUDIV025",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 146,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Sociedad y Moda",
-    "COD.": "AUDIV026",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 147,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Inteligencia Artificial",
-    "COD.": "AUDIV027",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 148,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Programa Chiloé: Territorio, paisaje y cultura del Archipiélago",
-    "COD.": "AUDIV028",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 149,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Interventions in public space",
-    "COD.": "AUDIV029",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 150,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Produciendo un hábitat accesible",
-    "COD.": "AUDIV031",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 151,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Paisajes Energéticos",
-    "COD.": "AUDIV033",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 152,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Taller práctico de experimentación de materiales",
-    "COD.": "AUDIV034",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 153,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Proceso, creatividad y proyecto",
-    "COD.": "AUDIV035",
-    "CRÉDITOS": 6
-  },
-  {
-    "N° REAL REAL": 154,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Movilidad Urbana y Ciudad Sustentable",
-    "COD.": "AUDIV036",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 155,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Espacio público y ciudades saludables",
-    "COD.": "AUDIV037",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 156,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "La ciudad moderna y sus representaciones simbólicas",
-    "COD.": "AUDIV038",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 157,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Iluminación Natural: diseño eficiente en espacios arquitectónicos",
-    "COD.": "AUDIV039",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 158,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Patrimonio material e inmaterial del Valle Central de Chile",
-    "COD.": "AUDIV040",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 159,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Geografía feminista",
-    "COD.": "AUDIV041",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 160,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Fundamentos de Economía",
-    "COD.": "AUDIV049",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 161,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Panorama del pensamiento estético",
-    "COD.": "AUDIV050",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 162,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "English for Work Purposes",
-    "COD.": "AUDIV051",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 163,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Procesos digitales",
-    "COD.": "AUDIV052",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 164,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Fundamentos de Diseño Digital",
-    "COD.": "AUDIV053",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 165,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Patrimonio + Turismo: su dimensión arquitectónica y cultura",
-    "COD.": "AUDIV054",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 166,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Entorno construido, experiencia urbana y bienestar",
-    "COD.": "AUDIV055",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 167,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Curso interdisciplinario PIES (Programa de Innovación a Emprendimiento Sostenible)",
-    "COD.": "AUDIV056",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 168,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Croquis y dibujo arquitectónico en 100 páginas",
-    "COD.": "AUDIV057",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 169,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Muralismo en Chile: espacio público y contexto político",
-    "COD.": "AUDIV058",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 170,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Geografías participativas; investigación, acción y divulgación comunitaria",
-    "COD.": "AUDIV060",
-    "CRÉDITOS": 3
-  },
-  {
-    "N° REAL REAL": 171,
-    "MENCIÓN": "Ambas Menciones",
-    "ELECTIVO": "Territorios periféricos: representaciones, agenciamientos, convivencias",
-    "COD.": "AUDIV061",
-    "CRÉDITOS": 3
-  }
-];
-
-  function mostrarDatos(datos) {
-      const cuerpoTabla = document.getElementById('cuerpoTabla');
-      if (!cuerpoTabla) return;
-
-      cuerpoTabla.innerHTML = ''; 
-
-      datos.forEach(item => {
-          const fila = document.createElement('tr');
-          fila.innerHTML = `
-              <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>${item.ELECTIVO}</strong></td>
-              <td style="padding: 10px; border-bottom: 1px solid #eee;">${item["MENCIÓN"] || '-'}</td>
-              <td style="padding: 10px; border-bottom: 1px solid #eee;"><code>${item["COD."]}</code></td>
-              <td style="padding: 10px; border-bottom: 1px solid #eee;">${item["CRÉDITOS"]}</td>
-          `;
-          cuerpoTabla.appendChild(fila);
-      });
-  }
-
-  window.onload = function() {
-      const canvasGrafico = document.getElementById('graficoBarras');
-      if (canvasGrafico && typeof config !== 'undefined') {
-          new Chart(canvasGrafico.getContext('2d'), config);
-      }
-
-      if (typeof baseDeDatos !== 'undefined') {
-          mostrarDatos(baseDeDatos);
-      }
-
-const inputBuscador = document.getElementById('buscador');
-      if (inputBuscador && typeof baseDeDatos !== 'undefined') {
-          inputBuscador.addEventListener('input', function(e) {
-              const textoBuscado = e.target.value.toLowerCase();
-              
-              const datosFiltrados = baseDeDatos.filter(item => {
-                  const nombre = item.ELECTIVO ? item.ELECTIVO.toLowerCase() : '';
-                  const mencion = item["MENCIÓN"] ? item["MENCIÓN"].toLowerCase() : '';
-                  const codigo = item["COD."] ? item["COD."].toLowerCase() : '';
-                  
-                  return nombre.includes(textoBuscado) || 
-                         mencion.includes(textoBuscado) || 
-                         codigo.includes(textoBuscado);
-              });
-              
-              mostrarDatos(datosFiltrados);
-          });
-      }
-  };
-</script>
-</body>
+  </body>
 </html>
