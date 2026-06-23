@@ -414,6 +414,1206 @@
   };
 
 
+ const baseDeDatos = [
+  {
+    "N° REAL REAL": 1,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Materiales y procesos industriales, desde una perspectiva de ciclo de la vida",
+    "COD.": "AUD5I006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 2,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Bocetaje avanzado para el diseño del producto",
+    "COD.": "AUD5I007",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 3,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales II, modelamiento paramétrico",
+    "COD.": "AUD5I008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 4,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Teoría y práctica del diseño de calzado",
+    "COD.": "AUD5I009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 5,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Innovación para la sostenibilidad",
+    "COD.": "AUD5I010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 6,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Procesos avanzados de fabricación",
+    "COD.": "AUD5I011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 7,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Comunicación, prototipado e implementación de servicios",
+    "COD.": "AUD5I012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 8,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Biobased materials for the built environment",
+    "COD.": "AUD5I013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 9,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Design sketching. Bocetaje para Diseñadores Industriales",
+    "COD.": "AUD5I014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 10,
+    "MENCIÓN": "mención I y S",
+    "ELECTIVO": "Diseño de accesorios con reinvención de materiales",
+    "COD.": "AUD5I015",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 11,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales III. Análisis y fabricación avanzada asistidos por computador",
+    "COD.": "AUD5I016",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 12,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Complementos sostenibles y Joyería contemporánea",
+    "COD.": "AUD5I017",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 13,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Creatividad para el Diseño industrial y servicios",
+    "COD.": "AUD5I018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 14,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Exploración creativa con los materiales y sus tecnologías",
+    "COD.": "AUD5I019",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 15,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Enfoques investigativos en Diseño, innovación y creatividad",
+    "COD.": "AUD5I020, AUD5V020",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 16,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Introducción al Desarrollo Front End con HTML, CSS y JavaScript",
+    "COD.": "AUD5I021, AUD5V021",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 17,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño de interfaz electrónica mediante Arduino",
+    "COD.": "AUD5I022",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 18,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Gamificación para el Diseño industrial y servicios",
+    "COD.": "AUD5I023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 19,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Laboratorio de oficios contemporáneos",
+    "COD.": "AUD5I024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 20,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "BattleBots: Interfacultades",
+    "COD.": "AUD5I025",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 21,
+    "MENCIÓN": "Troncal mención I y S",
+    "ELECTIVO": "Prototipado y comunicación de experiencias y servicios",
+    "COD.": "AUD5I026",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 22,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Técnicas de intervención y experimentación textil",
+    "COD.": "AUD5I027",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 23,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Patrimonio y restauración arquitectónica",
+    "COD.": "AUD5I028, AUDIV042",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 24,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Gestión y producción de arquitectura interior",
+    "COD.": "AUD5I029",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 25,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Artesanías: cultura, técnica y producto.",
+    "COD.": "AUD5I031",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 26,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Construcción en madera",
+    "COD.": "AUD5I032",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 27,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Arquitectura sin Residuos - Diseño, Prefabricación e Industrialización",
+    "COD.": "AUD5I033",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 28,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Introducción a la programación para el Diseño de interacción",
+    "COD.": "AUD5V0010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 29,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Animación Digital",
+    "COD.": "AUD5V0011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 30,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Introducción a la Ilustración",
+    "COD.": "AUD5V0012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 31,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño editorial",
+    "COD.": "AUD5V006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 32,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Lenguaje y composición fotográfica para el diseño",
+    "COD.": "AUD5V007, AUD5V010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 33,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Infografía",
+    "COD.": "AUD5V008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 34,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Tipografía",
+    "COD.": "AUD5V009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 35,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Tipografía: cultura y sociedad",
+    "COD.": "AUD5V011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 36,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño y Cultura Visual en Chile",
+    "COD.": "AUD5V012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 37,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Creatividad y diseño",
+    "COD.": "AUD5V013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 38,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Programación web e introducción a la animación digital",
+    "COD.": "AUD5V014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 39,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Puesta en valor desde el diseño patrimonio identidad y cultura",
+    "COD.": "AUD5V022",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 40,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Publicaciones editoriales experimentales",
+    "COD.": "AUD5V023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 41,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño editorial: de la creación a la publicación",
+    "COD.": "AUD5V024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 42,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño Gráfico para industrias culturales",
+    "COD.": "AUD5V025",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 43,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Taller de Ilustración",
+    "COD.": "AUD5V026",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 44,
+    "MENCIÓN": "Troncal mención V y M",
+    "ELECTIVO": "Diseño y visualización de información",
+    "COD.": "AUD5V027",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 45,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Representación arquitectónica mediante técnicas gráficas tradicionales",
+    "COD.": "AUD5V028, AUDIV030",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 46,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Materiales cerámicos y metales desde una perspectiva del ciclo de vida",
+    "COD.": "AUD6I006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 47,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño de productos y servicios basado en la experiencia y las emociones",
+    "COD.": "AUD6I007",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 48,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales: representación y simulación",
+    "COD.": "AUD6I008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 49,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Materiales y Diseño industrial I. Fundamentos",
+    "COD.": "AUD6I009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 50,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Historia y Teoría de la moda",
+    "COD.": "AUD6I010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 51,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño y patrimonio, Técnicas artesanales tradicionales y contemporánea",
+    "COD.": "AUD6I012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 52,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño y Sustentabilidad para la Economía Circular",
+    "COD.": "AUD6I013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 53,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño y energías renovables",
+    "COD.": "AUD6I014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 54,
+    "MENCIÓN": "Troncal mención I y S",
+    "ELECTIVO": "Modelamiento y representación digital",
+    "COD.": "AUD6I015",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 55,
+    "MENCIÓN": "Troncal mención I y S",
+    "ELECTIVO": "Materiales, tecnologías y Procesos de fabricación",
+    "COD.": "AUD6I016",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 56,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Tensoestructuras",
+    "COD.": "AUD6I017, AUDIV043",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 57,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño y construcción sustentable con madera masiva",
+    "COD.": "AUD6I018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 58,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño de vehículos",
+    "COD.": "AUD6I019, AUDIV059",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 59,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Introducción al moldaje y sistemas de representación textil",
+    "COD.": "AUD6I020",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 60,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Taller de metalmecánica para diseñadores",
+    "COD.": "AUD6I021",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 61,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Inteligencia Artificial aplicada a la Gestión de Proyectos de Diseño",
+    "COD.": "AUD6I023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 62,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Biomecánica e innovación aplicada al diseño ortopédico para seres vivos, a través de manufactura aditiva, impresión 3D y materiales compuestos",
+    "COD.": "AUD6I024, AUD5I030, AUD7I026",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 63,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño de vídeo juegos",
+    "COD.": "AUD6V006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 64,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Ilustración editorial",
+    "COD.": "AUD6V007",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 65,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Mapeo colectivo: Diseño y territorio",
+    "COD.": "AUD6V008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 66,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño de Contexto y el viaje del cliente",
+    "COD.": "AUD6V009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 67,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Fundamentos fotográficos",
+    "COD.": "AUD6V010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 68,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Introducción a la producción gráfica",
+    "COD.": "AUD6V011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 69,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Vanguardias racionales-constructivas: Diseño y proyectualidad en América Latina y Chile",
+    "COD.": "AUD6V012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 70,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Creación y Diseño de personajes para proyectos de animación",
+    "COD.": "AUD6V013, AUD7V010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 71,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Análisis de problemas informáticos en Diseño",
+    "COD.": "AUD6V014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 72,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Producción Gráfica 2.0 Editorial y Packaging",
+    "COD.": "AUD6V015",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 73,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Estética e industrias culturales",
+    "COD.": "AUD6V016",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 74,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Libro de artista, teoría y práctica",
+    "COD.": "AUD6V017",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 75,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Educación tipográfica",
+    "COD.": "AUD6V018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 76,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño y pensamiento crítico",
+    "COD.": "AUD6V019",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 77,
+    "MENCIÓN": "Troncal mención V y M",
+    "ELECTIVO": "Diseño editorial y publicación",
+    "COD.": "AUD6V020",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 78,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Producción Editorial y usos tipográficos",
+    "COD.": "AUD6V021",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 79,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Editar-diseñar-publicar. El espacio de los discursos de la arquitectura",
+    "COD.": "AUD6V022",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 80,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño Gráfico para las Artes",
+    "COD.": "AUD6V023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 81,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Edición experimental y artes visuales. Apreciación, debates y procedimientos documentales",
+    "COD.": "AUD6V024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 82,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Iconografía de la contracultura en Chile: desde los hippies al punk (teoría y práctica)",
+    "COD.": "AUD6V025",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 83,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Inteligencia Artificial Generativa",
+    "COD.": "AUD6V026",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 84,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño de ediciones experimentales. Neovanguardias en artes y poesía visual.",
+    "COD.": "AUD6V027",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 85,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño para el ciclismo, introducción a la cultura de los objetos",
+    "COD.": "AUD7I006",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 86,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Maderas y materiales biobasados",
+    "COD.": "AUD7I007",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 87,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales. Modelado conceptual y renderizado",
+    "COD.": "AUD7I008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 88,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Producción semi-industrial para proyectos de diseño de productos y objetos",
+    "COD.": "AUD7I009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 89,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Modelos y procesos de vitrofusión en cerámica",
+    "COD.": "AUD7I010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 90,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales I. Modelamiento conceptual y representación",
+    "COD.": "AUD7I011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 91,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Mecánica y Biomecánica aplicadas al Diseño",
+    "COD.": "AUD7I012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 92,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas computacionales IV. Modelamiento generativo y representación avanzada",
+    "COD.": "AUD7I013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 93,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Emprendimiento basado en Diseño",
+    "COD.": "AUD7I014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 94,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Color, materiales y acabados para el diseño de productos y servicios",
+    "COD.": "AUD7I015",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 95,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Diseño estratégico de productos y servicios",
+    "COD.": "AUD7I016",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 96,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Creación textil participativa",
+    "COD.": "AUD7I018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 97,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Creatividad y gamificación",
+    "COD.": "AUD7I019",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 98,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Principios de estructuras, materiales compuestos y plásticos reforzados",
+    "COD.": "AUD7I020",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 99,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Herramientas de sustentabilidad textil y upcycling",
+    "COD.": "AUD7I021",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 100,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Enfoques y perspectivas disciplinares emergentes y sustentabilidad",
+    "COD.": "AUD7I022",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 101,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Experimentación textil orientada al upcycling",
+    "COD.": "AUD7I023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 102,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Introducción al Diseño de Vehículos con Realidad Virtual",
+    "COD.": "AUD7I024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 103,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Introducción al biodiseño",
+    "COD.": "AUD7I025",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 104,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Reconocimiento y diseño de superficies textiles",
+    "COD.": "AUD7I027",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 105,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Joyería contemporánea",
+    "COD.": "AUD7I028",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 106,
+    "MENCIÓN": "Mención I y S",
+    "ELECTIVO": "Ergonomía aplicada al diseño de vehículos",
+    "COD.": "AUD7I029",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 107,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "La contingencia social desde el diseño centrado en el usuario",
+    "COD.": "AUD7V006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 108,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Tipografía: Forma y función",
+    "COD.": "AUD7V007",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 109,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Animación y edición digital",
+    "COD.": "AUD7V008",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 110,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño y estrategia de publicidad y propaganda",
+    "COD.": "AUD7V009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 111,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Visualización de Datos",
+    "COD.": "AUD7V011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 112,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Cultura visual en Latinoamérica",
+    "COD.": "AUD7V012",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 113,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Diseño, afecto y género",
+    "COD.": "AUD7V013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 114,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "El discurso del afiche político: estética y praxis",
+    "COD.": "AUD7V014",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 115,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Experimentación editorial",
+    "COD.": "AUD7V015",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 116,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Color, semiótica y lenguaje",
+    "COD.": "AUD7V016",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 117,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Ux UI, Experiencia de usuario y diseño de interfaz",
+    "COD.": "AUD7V017",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 118,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Ilustración Creativa",
+    "COD.": "AUD7V018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 119,
+    "MENCIÓN": "Mencion V y M",
+    "ELECTIVO": "Oficio digital",
+    "COD.": "AUD7V019",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 120,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Lean UX: Diseño de experiencia de usuario con metodologías ágiles y Lean",
+    "COD.": "AUD7V020",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 121,
+    "MENCIÓN": "Troncal mención V y M",
+    "ELECTIVO": "Diseño de interacción y experiencia",
+    "COD.": "AUD7V021",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 122,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Patrimonio intangible y cultural popular (visual)",
+    "COD.": "AUD7V022",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 123,
+    "MENCIÓN": "Mención V y M",
+    "ELECTIVO": "Narrativa gráfica",
+    "COD.": "AUD7V024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 124,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Smart Cities, nuevas ciudades en el siglo XXI",
+    "COD.": "AUDI5029",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 125,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Emprendimiento y consultoría en diseño",
+    "COD.": "AUDIV001",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 126,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Color y percepción",
+    "COD.": "AUDIV002",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 127,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Packaging de productos",
+    "COD.": "AUDIV003",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 128,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Museografía",
+    "COD.": "AUDIV004",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 129,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Branding",
+    "COD.": "AUDIV005",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 130,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño y Montaje de Exposiciones",
+    "COD.": "AUDIV006",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 131,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Color aplicado al diseño",
+    "COD.": "AUDIV007",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 132,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Semiótica",
+    "COD.": "AUDIV008",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 133,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño y Marketing de Productos y Servicios: Propuesta para ámbitos de Marketing de Consumo, Industrial, Bien Público y Político",
+    "COD.": "AUDIV009",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 134,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Herramientas para el emprendimiento en diseño",
+    "COD.": "AUDIV010",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 135,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Introducción al diseño de packaging",
+    "COD.": "AUDIV011",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 136,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Color, anatomía y lenguaje",
+    "COD.": "AUDIV012",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 137,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño para Innovación Social",
+    "COD.": "AUDIV013",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 138,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Investigación-Acción Participativa (PAR) para el diseño",
+    "COD.": "AUDIV018",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 139,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Estrategias de Ecodiseño",
+    "COD.": "AUDIV019",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 140,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño de instrumentos musicales digitales",
+    "COD.": "AUDIV020",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 141,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Crítica cultural, visualidades feministas y disidencias",
+    "COD.": "AUDIV021",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 142,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Realidad virtual para diseño y arquitectura",
+    "COD.": "AUDIV022",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 143,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Diseño automotriz",
+    "COD.": "AUDIV023",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 144,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Internet de las cosas para vivienda social",
+    "COD.": "AUDIV024",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 145,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "La interacción del Color; su anatomía y lenguaje",
+    "COD.": "AUDIV025",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 146,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Sociedad y Moda",
+    "COD.": "AUDIV026",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 147,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Inteligencia Artificial",
+    "COD.": "AUDIV027",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 148,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Programa Chiloé: Territorio, paisaje y cultura del Archipiélago",
+    "COD.": "AUDIV028",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 149,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Interventions in public space",
+    "COD.": "AUDIV029",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 150,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Produciendo un hábitat accesible",
+    "COD.": "AUDIV031",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 151,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Paisajes Energéticos",
+    "COD.": "AUDIV033",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 152,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Taller práctico de experimentación de materiales",
+    "COD.": "AUDIV034",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 153,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Proceso, creatividad y proyecto",
+    "COD.": "AUDIV035",
+    "CRÉDITOS": 6
+  },
+  {
+    "N° REAL REAL": 154,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Movilidad Urbana y Ciudad Sustentable",
+    "COD.": "AUDIV036",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 155,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Espacio público y ciudades saludables",
+    "COD.": "AUDIV037",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 156,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "La ciudad moderna y sus representaciones simbólicas",
+    "COD.": "AUDIV038",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 157,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Iluminación Natural: diseño eficiente en espacios arquitectónicos",
+    "COD.": "AUDIV039",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 158,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Patrimonio material e inmaterial del Valle Central de Chile",
+    "COD.": "AUDIV040",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 159,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Geografía feminista",
+    "COD.": "AUDIV041",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 160,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Fundamentos de Economía",
+    "COD.": "AUDIV049",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 161,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Panorama del pensamiento estético",
+    "COD.": "AUDIV050",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 162,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "English for Work Purposes",
+    "COD.": "AUDIV051",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 163,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Procesos digitales",
+    "COD.": "AUDIV052",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 164,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Fundamentos de Diseño Digital",
+    "COD.": "AUDIV053",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 165,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Patrimonio + Turismo: su dimensión arquitectónica y cultura",
+    "COD.": "AUDIV054",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 166,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Entorno construido, experiencia urbana y bienestar",
+    "COD.": "AUDIV055",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 167,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Curso interdisciplinario PIES (Programa de Innovación a Emprendimiento Sostenible)",
+    "COD.": "AUDIV056",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 168,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Croquis y dibujo arquitectónico en 100 páginas",
+    "COD.": "AUDIV057",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 169,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Muralismo en Chile: espacio público y contexto político",
+    "COD.": "AUDIV058",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 170,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Geografías participativas; investigación, acción y divulgación comunitaria",
+    "COD.": "AUDIV060",
+    "CRÉDITOS": 3
+  },
+  {
+    "N° REAL REAL": 171,
+    "MENCIÓN": "Ambas Menciones",
+    "ELECTIVO": "Territorios periféricos: representaciones, agenciamientos, convivencias",
+    "COD.": "AUDIV061",
+    "CRÉDITOS": 3
+  }
+];
+            
   window.onload = function() {
     const ctx = document.getElementById('graficoBarras').getContext('2d');
     new Chart(ctx, config);
