@@ -296,17 +296,18 @@
                 <li><em>Título profesional de Diseñador(a) Industrial:</em> Mención Industrial y Servicios.</li>
                 <li><em>Título profesional de Disñador(a) Gráfico(a):</em> Mención en Visualidad y Medios.</li>
             </ul>
-        <p>Para esto, por ende, se ha creado una malla curricular que se basa un plan de estudios recientemente innovado, de manera de asegurar su pertinencia con los tiempos actuales marcados por la globalización, el desarrollo tecnológico y la protección ambiental. Esta situación, que ha abierto nuevas áreas de desempeño profesional para los diseñadores, también obliga a un perfeccionamiento continuo donde el aprender a aprender adquiere un carácter relevante. (Universidad de Chile, 2026.)</p>
+        <p>Para esto, por ende, se ha creado una malla curricular que se basa un plan de estudios recientemente innovado, de manera de asegurar su pertinencia con los tiempos actuales marcados por la globalización, el desarrollo tecnológico y la protección ambiental. Esta situación, que ha abierto nuevas áreas de desempeño profesional para los diseñadores, también obliga a un perfeccionamiento continuo donde el aprender a aprender adquiere un carácter relevante. (Universidad de Chile, 2026.)<span class="author-sup">1</span></li></p>
 
-            <p>Dicha <a href="https://drive.google.com/file/d/1kC9xYUbKkL99kAaEN-HOufKv01lqKgTC/view?usp=sharing" target="_blank">malla curricular</a>  /p>
-
-            <p>Revisando estas acreditaciones, podemos encontrar plazos de acreditación que oscilan entre los 3 y los 7 años.
-            </p>
-            <h4>¿Existe una correlación directa entre el nivel de acreditación de una universidad y el costo de su arancel anual?</h4>
-
-            <p>En el siguiente gráfico podemos ver la respuesta.</p>
-
-            <figure>
+            <p>Dicha <a href="https://drive.google.com/file/d/1kC9xYUbKkL99kAaEN-HOufKv01lqKgTC/view?usp=sharing" target="_blank">malla curricular</a> establece y permite que los estudiantes opten por ramos electivos, los cuales, como lo dice su propio nombre, pueden ser elegidos a preferencia y deseo del estudiante, dependiendo qué es lo que cree que le convendrá de mejor manera a su formación profesional y los horarios disponibles. Estos electivos, según la información actualizada, detallada y proporcionada por el CEDIS (Centro de Estudiantes de Diseño) deben ser repartidos de la siguiente manera:</p>
+          
+<p>Dada dicha información acerca de las condiciones y posibilidades que los estudiantes poseen para elegir sus respectivos electivos,podemos desarrollar las siguientes interrogantes, considerando un rango de tiempo entre los años 20xx y 2xx:</p>
+    <ul>
+                <li><em>Pregunta 1:</em> xxx </li>
+                <li><em>Pregunta 2:</em> xxx </li>
+         <li><em>Pregunta 3:</em> xxx </li>   
+    </ul>            
+            <p>En los siguientes gráficos podemos obtener las respuestas:</p>
+           <figure>
                 <canvas id="dispersion"></canvas>
                 <figcaption>
                     Años de acreditación institucional y arancel del programa. Datos 2026, obtenidos del
