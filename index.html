@@ -328,26 +328,57 @@
             <p>Para visualizar patrones en estructuras complejas, los <a href="https://datavizcatalogue.com/ES/metodos/diagrama_de_dispersion.html" target="_blank">diagramas de distribución</a> resultan idóneos. Al proyectar una colección de puntos mediante coordenadas cartesianas, el cruce de las variables en los ejes horizontal y vertical permite detectar la presencia y fuerza de una correlación entre ambas.</p>
 
             <p>Al trazar una línea de mejor ajuste entre el programa de menor costo y acreditación básica (Diseño de Interiores y Ambientes en la <small>UNIACC</small>) hasta la opción de mayor costo y acreditación (Diseño en la <small>PUC</small>), se observa una pendiente ascendente en la distribución de los puntos. Si bien esto sugiere una correlación positiva, donde un mayor número de años de acreditación tiende a coincidir con aranceles más altos, la fuerza de correlación de débil y los valores atípicos son varios.</p>
-<div style="max-width: 450px; margin: 30px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(166, 25, 46, 0.08);">
-    <canvas id="graficoFocos"></canvas>
+<div class="chart-wrapper">
+        <canvas id="graficoFocos"></canvas>
+    </div>
+
     <script>
-    
-    const dataFocos = {
-      labels: ['Ciencia y Tecnología', 'Comunicación y Gestión', 'Morfología'],
-     
-    };
+        // Estructura de datos extraída de tu PDF
+        const data = {
+          labels: [
+            'Ciencia y Tecnología', 
+            'Comunicación y Gestión', 
+            'Morfología'
+          ],
+          datasets: [{
+            label: 'Cantidad de Asignaturas',
+            data: [21, 19, 16],
+            backgroundColor: [
+              'rgba(106, 90, 205, 0.75)',  // Morado Principal
+              'rgba(186, 85, 211, 0.7)',   // Lila Claro
+              'rgba(100, 149, 237, 0.75)'  // Azul Pastel
+            ],
+            borderColor: [
+              'rgba(106, 90, 205, 1)',
+              'rgba(186, 85, 211, 1)',
+              'rgba(100, 149, 237, 1)'
+            ],
+            borderWidth: 1.5
+          }]
+        };
 
-    const configFocos = {
-      type: 'pie',
-      data: dataFocos,
-     
-    };
+        // Configuración para el gráfico Pie
+        const config = {
+          type: 'pie',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right'
+              },
+              title: {
+                display: true,
+                text: 'Distribución de Asignaturas por Foco'
+              }
+            }
+          }
+        };
 
-    // Esto busca "graficoFocos". Si el canvas no se cargó antes, fallará aquí.
-    const ctxFocos = document.getElementById('graficoFocos').getContext('2d');
-    new Chart(ctxFocos, configFocos);
-</script>
-</div>
+        // Renderizar el gráfico en el navegador
+        const ctx = document.getElementById('graficoFocos').getContext('2d');
+        new Chart(ctx, config);
+    </script>
 
 
             <h4> Historial de Electivos </h4>
