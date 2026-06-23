@@ -263,17 +263,17 @@
                 letter-spacing: 0.1rem;
             }
         </style>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
     </head>
     <body>
         <nav>
             <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 32 32" xml:space="preserve" fill="#861d1d" stroke="#861d1d"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><style type="text/css">.sharpcorners_een{fill:#fb7474;}.st0{fill:#0B1719;}</style><g><g><rect x="9" y="1" class="sharpcorners_een" width="13" height="2"></rect><path class="sharpcorners_een" d="M24.598,12.998C22.318,11.098,21,8.284,21,5.316V4H10v1.316c0,2.968-1.318,5.782-3.598,7.682 L4,15l11,16V19.95c-1.141-0.232-2-1.24-2-2.45c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5c0,1.209-0.859,2.218-2,2.45V31l11-16 L24.598,12.998z"></path></g><g><rect x="9" y="1" class="sharpcorners_een" width="13" height="2"></rect><path class="sharpcorners_een" d="M24.598,12.998C22.318,11.098,21,8.284,21,5.316V4H10v1.316c0,2.968-1.318,5.782-3.598,7.682 L4,15l11,16V19.95c-1.141-0.232-2-1.24-2-2.45c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5c0,1.209-0.859,2.218-2,2.45V31l11-16 L24.598,12.998z"></path></g></g></g></svg>
-                        <path d="M21.6,10.73a35.61,35.61,0,0,0,0,50.18,1.13,1.13,0,0,1,0,1.48L19,64.85a.75.75,0,0,1-.73.37,1.07,1.07,0,0,1-.74-.37,41.29,41.29,0,0,1,0-58.06,1.07,1.07,0,0,1,.74-.37.75.75,0,0,1,.73.37L21.6,9.25A1.12,1.12,0,0,1,21.6,10.73Zm11.68,38.5-2.46,2.46a.92.92,0,0,1-1.47,0,22.26,22.26,0,0,1,0-31.74.92.92,0,0,1,1.47,0l2.46,2.46a1,1,0,0,1,0,1.48,17.45,17.45,0,0,0-4.79,11.93,15.91,15.91,0,0,0,4.79,11.93.93.93,0,0,1,0,1.48ZM53,43.2,66.37,94H61.45L49.64,48.86,45.58,64h4.06l1.23,5.16H44.23L41.4,80H53.33l1.23,5.16H40.05L37.71,94H32.79L46.2,43.08a7.53,7.53,0,0,1-4.31-6.89,7.62,7.62,0,0,1,7.75-7.63,7.51,7.51,0,0,1,7.63,7.63A7.73,7.73,0,0,1,53,43.2ZM70.55,20a22.29,22.29,0,0,1,0,31.74.92.92,0,0,1-1.47,0l-2.46-2.46a.92.92,0,0,1,0-1.48,15.91,15.91,0,0,0,4.79-11.93,17.23,17.23,0,0,0-4.79-11.93,1,1,0,0,1,0-1.48L69.08,20a.92.92,0,0,1,1.47,0ZM94.17,35.82a41.51,41.51,0,0,1-11.93,29,1.11,1.11,0,0,1-.74.37.75.75,0,0,1-.74-.37l-2.58-2.46a1.13,1.13,0,0,1,0-1.48,35.63,35.63,0,0,0,0-50.18,1.12,1.12,0,0,1,0-1.48l2.58-2.46a.75.75,0,0,1,.74-.37,1.11,1.11,0,0,1,.74.37A41.72,41.72,0,0,1,94.17,35.82Z" />
-                    </svg>
-                   InDisV
-                </span>
+              <span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" viewBox="0 0 100 100" fill="#861d1d">
+        <path d="M21.6,10.73a35.61,35.61,0,0,0,0,50.18,1.13,1.13,0,0,1,0,1.48L19,64.85a.75.75,0,0,1-.73.37,1.07,1.07,0,0,1-.74-.37,41.29,41.29,0,0,1,0-58.06,1.07,1.07,0,0,1,.74-.37.75.75,0,0,1,.73.37L21.6,9.25A1.12,1.12,0,0,1,21.6,10.73Zm11.68,38.5-2.46,2.46a.92.92,0,0,1-1.47,0,22.26,22.26,0,0,1,0-31.74.92.92,0,0,1,1.47,0l2.46,2.46a1,1,0,0,1,0,1.48,17.45,17.45,0,0,0-4.79,11.93,15.91,15.91,0,0,0,4.79,11.93.93.93,0,0,1,0,1.48ZM53,43.2,66.37,94H61.45L49.64,48.86,45.58,64h4.06l1.23,5.16H44.23L41.4,80H53.33l1.23,5.16H40.05L37.71,94H32.79L46.2,43.08a7.53,7.53,0,0,1-4.31-6.89,7.62,7.62,0,0,1,7.75-7.63,7.51,7.51,0,0,1,7.63,7.63A7.73,7.73,0,0,1,53,43.2ZM70.55,20a22.29,22.29,0,0,1,0,31.74.92.92,0,0,1-1.47,0l-2.46-2.46a.92.92,0,0,1,0-1.48,15.91,15.91,0,0,0,4.79-11.93,17.23,17.23,0,0,0-4.79-11.93,1,1,0,0,1,0-1.48L69.08,20a.92.92,0,0,1,1.47,0ZM94.17,35.82a41.51,41.51,0,0,1-11.93,29,1.11,1.11,0,0,1-.74.37.75.75,0,0,1-.74-.37l-2.58-2.46a1.13,1.13,0,0,1,0-1.48,35.63,35.63,0,0,0,0-50.18,1.12,1.12,0,0,1,0-1.48l2.58-2.46a.75.75,0,0,1,.74-.37,1.11,1.11,0,0,1,.74.37A41.72,41.72,0,0,1,94.17,35.82Z" />
+    </svg>
+    InDisV
+</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
@@ -302,23 +302,18 @@
             <p>Dicha <a href="https://drive.google.com/file/d/1kC9xYUbKkL99kAaEN-HOufKv01lqKgTC/view?usp=sharing" target="_blank">malla curricular</a> establece y permite que los estudiantes opten por ramos electivos, los cuales, como lo dice su propio nombre, pueden ser elegidos a preferencia y deseo del estudiante, dependiendo qué es lo que cree que le convendrá de mejor manera a su formación profesional y los horarios disponibles.</p>
  <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: center;">
   <img src="gráfico total electivos.svg" alt="Diagrama aluvial de la mención Visualidad y Medios" style="width: 100%; height: auto;">
-</div>         
-      <div class="sunburst-container">
-  <svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 912 905" width="912" height="905">
-    <defs>
-      <style>
-        .st0 { fill: #fff; }
-        .st0, .st1, .st2 { isolation: isolate; }
-        .st0, .st2 { font-family: Arial-ItalicMT, Arial; font-size: 10px; font-style: italic; }
-        .st3 { fill: #910e0e; }
-        .st4 { fill: #efd3d9; }
-        .st5 { fill: #ffc6cc; }
-      </style>
-    </defs>
-    <path class="st5" d="M458,222.68c125.18,1.1,225.76,103.48,224.66,228.66..."/>
-  </svg>
-</div>
-            <p>En los siguientes gráficos podemos obtener las respuestas:</p>
+</div>     
+            
+ <figcaption> Gráfico aluvial con el total de electivos creados para la mención de visualidad y medios </figcaption>
+
+
+      <p>Los electivos libres son rotatorios semestre a semestre, sin embargo, dentro del último tiempo, los electivos disponibles para los alumnos muestran tendencias priorizadas.</p>
+            
+  <div style="width: 100%; max-width: 800px; margin: 0 auto; text-align: center;">
+  <img src="SUNBURST DIAGRAM.svg" alt="SUNBURST DIAGRAM" style="width: 100%; height: auto;">
+</div>                
+     
+           <p>Al rastrear el volumen de los electivos actualmente impartidos en la Universidad de Chile, se revela un claro centro de gravedad. Como se observa en el gráfico, una proporción dominante de los flujos académicos y la concentración de asignaturas convergen hacia un mismo núcleo: tipografía y  producción editorial. </p>
             
            <figure>
                 <div style="width: 100%; max-width: 800px; margin: 0 auto;">
@@ -328,15 +323,64 @@
                Grafico con los 3 principales grupos de electivos en los últimos años, analizando el enfoque editorial versus otras disciplinas.
                 </figcaption>
             </figure>
-            <p>Al rastrear el volumen de los electivos actualmente impartidos en la Universidad de Chile, se revela un claro centro de gravedad. Como se observa en el gráfico, una proporción dominante de los flujos académicos y la concentración de asignaturas convergen hacia un mismo núcleo: tipografía y  producción editorial. </p>
             <p>  La gráfica evidencia que, aunque la teoría divide la disciplina en múltiples áreas de estudio, la oferta real de asignaturas tiende a fusionar ambos conceptos.</p>
             
             <p>Para visualizar patrones en estructuras complejas, los <a href="https://datavizcatalogue.com/ES/metodos/diagrama_de_dispersion.html" target="_blank">diagramas de distribución</a> resultan idóneos. Al proyectar una colección de puntos mediante coordenadas cartesianas, el cruce de las variables en los ejes horizontal y vertical permite detectar la presencia y fuerza de una correlación entre ambas.</p>
 
             <p>Al trazar una línea de mejor ajuste entre el programa de menor costo y acreditación básica (Diseño de Interiores y Ambientes en la <small>UNIACC</small>) hasta la opción de mayor costo y acreditación (Diseño en la <small>PUC</small>), se observa una pendiente ascendente en la distribución de los puntos. Si bien esto sugiere una correlación positiva, donde un mayor número de años de acreditación tiende a coincidir con aranceles más altos, la fuerza de correlación de débil y los valores atípicos son varios.</p>
-<div style="max-width: 450px; margin: 30px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(166, 25, 46, 0.08);">
-    <canvas id="graficoFocos"></canvas>
-</div>
+<div class="chart-wrapper">
+        <canvas id="graficoFocos"></canvas>
+    </div>
+
+    <script>
+        // Estructura de datos extraída de tu PDF
+        const data = {
+          labels: [
+            'Ciencia y Tecnología', 
+            'Comunicación y Gestión', 
+            'Morfología'
+          ],
+          datasets: [{
+            label: 'Cantidad de Asignaturas',
+            data: [21, 19, 16],
+            backgroundColor: [
+              'rgba(106, 90, 205, 0.75)',  // Morado Principal
+              'rgba(186, 85, 211, 0.7)',   // Lila Claro
+              'rgba(100, 149, 237, 0.75)'  // Azul Pastel
+            ],
+            borderColor: [
+              'rgba(106, 90, 205, 1)',
+              'rgba(186, 85, 211, 1)',
+              'rgba(100, 149, 237, 1)'
+            ],
+            borderWidth: 1.5
+          }]
+        };
+
+        // Configuración para el gráfico Pie
+        const config = {
+          type: 'pie',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right'
+              },
+              title: {
+                display: true,
+                text: 'Distribución de Asignaturas por Foco'
+              }
+            }
+          }
+        };
+
+        // Renderizar el gráfico en el navegador
+        const ctx = document.getElementById('graficoFocos').getContext('2d');
+        new Chart(ctx, config);
+    </script>
+
+
             <h4> Historial de Electivos </h4>
 
             <p> Hasta ahora hemos evidenciado la fuerte concentración hacia el diseño impreso y tipográfico mediante visualizaciones macro. Sin embargo, para comprender la verdadera dimensión de la oferta académica, es necesario abrir el catálogo en su totalidad. En la siguiente tabla dinámica se compila el registro completo de los electivos creados para la carrera de Diseño. Estos electivos presentan 3 categorías: Industrial y Servicios, Ambas Menciones y Visualidad y Medios. 
@@ -380,8 +424,7 @@
         </footer>
        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-        <script>
-
+        <script> 
   const data = {
     labels: ['Percepción y Semiótica', 'Curaduría y Narrativas', 'Experimentación y Crítica'],
     datasets: [
@@ -1695,21 +1738,4 @@ const inputBuscador = document.getElementById('buscador');
   };
 </script>
 </body>
-</html>
-            
-window.onload = function() {
-    const ctx = document.getElementById('graficoBarras').getContext('2d');
-    new Chart(ctx, config);
-  };
-</script>
-                
-                                    ];
-                                },
-                            },
-                        },
-                    },
-                },
-            });
-        </script>
-    </body>
 </html>
