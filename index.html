@@ -336,16 +336,16 @@
             <section id="seccion-buscador" style="margin: 40px 0;">
                 <h3 style="font-family: var(--sans);">Buscador de Electivos</h3>
                 <input type="text" id="buscador" placeholder="Escribe para buscar un electivo..." style="width: 100%; padding: 12px; margin-bottom: 20px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                        <thead>
-                            <tr style="background-color: #f4f4f4;">
-                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Electivo</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Mención</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Código</th>
-                                <th style="padding: 12px; border-bottom: 2px solid #ddd;">Créditos</th>
-                            </tr>
-                        </thead>
+                <div style="max-height: 400px; overflow-y: auto; overflow-x: auto; border: 1px solid #ddd; border-radius: 4px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead style="position: sticky; top: 0; z-index: 1; background-color: #f4f4f4;">
+                <tr>
+                    <th style="padding: 12px; border-bottom: 2px solid #ddd;">Electivo</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #ddd;">Mención</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #ddd;">Código</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #ddd;">Créditos</th>
+                </tr>
+            </thead>
                         <tbody id="cuerpoTabla">
                         </tbody>
                     </table>
@@ -1661,17 +1661,24 @@
           mostrarDatos(baseDeDatos);
       }
 
-      const inputBuscador = document.getElementById('buscador');
+const inputBuscador = document.getElementById('buscador');
       if (inputBuscador && typeof baseDeDatos !== 'undefined') {
           inputBuscador.addEventListener('input', function(e) {
               const textoBuscado = e.target.value.toLowerCase();
-              const datosFiltrados = baseDeDatos.filter(item => 
-                  item.ELECTIVO && item.ELECTIVO.toLowerCase().includes(textoBuscado)
-              );
+              
+              const datosFiltrados = baseDeDatos.filter(item => {
+                  const nombre = item.ELECTIVO ? item.ELECTIVO.toLowerCase() : '';
+                  const mencion = item["MENCIÓN"] ? item["MENCIÓN"].toLowerCase() : '';
+                  const codigo = item["COD."] ? item["COD."].toLowerCase() : '';
+                  
+                  return nombre.includes(textoBuscado) || 
+                         mencion.includes(textoBuscado) || 
+                         codigo.includes(textoBuscado);
+              });
+              
               mostrarDatos(datosFiltrados);
           });
-      }
-  };
+      };
 </script>
 </body>
 </html>
